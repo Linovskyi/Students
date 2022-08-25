@@ -1,0 +1,41 @@
+﻿@using Students.Models
+@model StudentVievModel
+
+<div class="container">
+    @using (Html.BeginForm("Update", "Students"))
+    {
+        <div class="row">
+            <div class="col-md-6">
+
+                @Html.HiddenFor(model => model.Id)
+                <div class="row">
+                    <div class="col-md-6">@Html.LabelFor(model => model.Id)</div>
+                    <div class="col-md-6">@Html.DisplayFor(model => model.Id)</div>
+                </div>
+                <div class="row aiport-details" style="">
+                    <div class="col-md-6">@Html.LabelFor(model => model.FirsName)</div>
+                    <div class="col-md-6">@Html.TextBoxFor(model => model.FirsName, new { @class= "form-control" })</div>
+                </div>
+                <div class="row aiport-details">
+                    <div class="col-md-6">@Html.LabelFor(model => model.LastName)</div>
+                    <div class="col-md-6">@Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })</div>
+                </div>
+                <div class="row aiport-details">
+                    <div class="col-md-6">@Html.LabelFor(model => model.Birthday)</div>
+                    <div class="col-md-6">@Html.TextBoxFor(model => model.Birthday, new { @class = "form-control" })</div>
+                </div>
+                <div class="row aiport-details">
+                    <div class="col-md-6">@Html.LabelFor(model => model.RecordBook)</div>
+                    <div class="col-md-6">@Html.TextBoxFor(model => model.RecordBook, new { @class = "form-control" })</div>
+                </div>
+            </div>
+            <div class="col-md-6"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-11"></div>
+            <div class="col-md-1">
+                <input type="submit" class="btn btn-success text-right" value="Save" />
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,56 @@
+﻿@using Students.Models
+@model StudentsVievModel
+
+<h2>Student</h2>
+<br />
+@Html.ActionLink("Add student", "Details", "Students", new { }, new { @class="btn btn-primary" })
+<br />
+<br />
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            @{
+                var studentHeader = Model.Students.First();
+            }
+
+
+            <th>@Html.LabelFor(model => studentHeader.Id)</th>
+            <th>@Html.LabelFor(model => studentHeader.FirsName)</th>
+            <th>@Html.LabelFor(model => studentHeader.LastName)</th>
+            <th>@Html.LabelFor(model => studentHeader.Birthday)</th>
+            <th>@Html.LabelFor(model => studentHeader.RecordBook)</th>
+            <th>
+                <label>Controls</label>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model.Students)
+        {
+            <tr>
+                <td>@Html.DisplayFor(model => student.Id)</td>
+                <td>@Html.DisplayFor(model => student.FirsName)</td>
+                <td>@Html.DisplayFor(model => student.LastName)</td>
+                <td>@Html.DisplayFor(model => student.Birthday)</td>
+                <td>@Html.DisplayFor(model => student.RecordBook)</td>
+                <td>
+                    @using (@Html.BeginForm("Details", "Students", FormMethod.Get))
+                    {
+                        @Html.Hidden("Id", student.Id)
+                        ;
+                        <input type="submit" class="btn btn-primary" value="Details" />
+                    }
+                    @using (@Html.BeginForm("Remove", "Students", FormMethod.Post))
+                    {
+                        @Html.Hidden("Id", student.Id)
+                        ;
+                        <input type="submit" class="btn btn-danger" value="Remove" />
+                    }
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
